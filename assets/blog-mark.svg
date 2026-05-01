@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" viewBox="0 0 160 160" role="img" aria-labelledby="title desc">
+  <title id="title">博客标识</title>
+  <desc id="desc">由纸张、笔尖和星点组成的个人博客标识。</desc>
+  <rect width="160" height="160" rx="28" fill="#0f766e"/>
+  <path d="M45 34h54l18 18v74H45z" fill="#fff" opacity=".96"/>
+  <path d="M99 34v20h18" fill="#dbeafe"/>
+  <path d="M60 72h42M60 88h42M60 104h28" fill="none" stroke="#0b4f4a" stroke-width="7" stroke-linecap="round"/>
+  <path d="M108 98l13 13-28 28-16 3 3-16z" fill="#f59e0b"/>
+  <path d="M108 98l13 13" fill="none" stroke="#78350f" stroke-width="5" stroke-linecap="round"/>
+  <circle cx="48" cy="42" r="5" fill="#bfdbfe"/>
+</svg>
