@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="基于 Matt Pocock 的 It Ain't Broke 演讲整理：AI 编程时代，为什么软件基本功仍然重要。"
+    />
+    <title>AI 时代，软件基本功更重要了 · 我的个人博客</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="../index.html" aria-label="回到首页">
+        <img src="../assets/blog-mark.svg" alt="" width="38" height="38" />
+        <span>我的个人博客</span>
+      </a>
+      <nav class="site-nav" aria-label="主导航">
+        <a href="../index.html">首页</a>
+        <a href="index.html">文章</a>
+        <a href="../about.html">关于</a>
+      </nav>
+    </header>
+
+    <main class="article-layout">
+      <article class="article">
+        <header class="article-header">
+          <p class="post-meta">2026 年 5 月 1 日 · AI 编程</p>
+          <h1>AI 时代，软件基本功更重要了</h1>
+          <p>
+            这是一篇基于 Matt Pocock 演讲
+            <a href="https://www.youtube.com/watch?v=v4F1gFy-hqg"
+              >It Ain't Broke: Why Software Fundamentals Matter More Than Ever</a
+            >
+            的观看笔记和公开资料整理。
+          </p>
+        </header>
+
+        <p>
+          这支视频的核心观点很直接：AI 并没有让软件工程的基本功过时。
+          恰恰相反，当代码生成变得更便宜、更快时，真正稀缺的能力会转移到需求澄清、
+          系统设计、反馈闭环、可维护性和判断力上。
+        </p>
+
+        <p>
+          如果一个团队没有清晰的边界、测试、接口和共同语言，AI 只会把混乱生成得更快。
+          如果这些基本功扎实，AI 才更像放大器，而不是新的复杂性来源。
+        </p>
+
+        <h2>代码并不真的便宜</h2>
+        <p>
+          现在很容易产生一种错觉：既然大模型可以快速写代码，代码本身就不值钱了。
+          但真正昂贵的不是第一次生成，而是让这段代码长期留在系统里：
+          它要被读懂、修改、测试、排障、迁移，还要和其他模块一起演化。
+        </p>
+        <p>
+          AI 可以降低输入成本，却不会自动降低生命周期成本。
+          烂代码被生成出来的速度越快，后续维护、理解和修复的成本也会越快堆积。
+        </p>
+
+        <h2>先建立共同语境</h2>
+        <p>
+          视频里强调了一个很朴素但经常被忽略的动作：在动手写代码之前，
+          先让 AI 和人对问题形成共同理解。不要一上来就让模型“直接实现”，
+          而是让它先提问、复述需求、暴露不确定性。
+        </p>
+        <p>
+          这和领域驱动设计里的“统一语言”很接近。团队、代码、文档和 AI 提示词里，
+          应该尽量使用同一套业务词汇。词汇稳定，模型就更容易对齐上下文；
+          概念混乱，模型就只能在表面文本里猜。
+        </p>
+
+        <h2>反馈闭环是速度上限</h2>
+        <p>
+          AI 编程不是把测试变得不重要，而是让测试、类型检查、lint、静态分析变得更重要。
+          因为生成速度越快，就越需要机器能快速告诉你“这是不是对的”。
+        </p>
+        <p>
+          对我来说，这一点和可观测性的思路非常像：没有信号，就没有控制。
+          在线上系统里，我们靠日志、指标和追踪理解系统行为；
+          在 AI 辅助开发里，我们靠测试、类型、契约和小步提交理解代码行为。
+        </p>
+
+        <h2>深模块比大杂烩更适合 AI</h2>
+        <p>
+          好的模块应该把复杂实现藏在稳定、简洁的接口后面。
+          这样的代码更容易被人理解，也更容易被 AI 正确调用。
+          反过来，如果每个函数都泄漏大量细节，模型会被迫在过多上下文里游泳，
+          生成结果也更容易漂。
+        </p>
+        <p>
+          这也是为什么“先设计接口，再委托实现”会成为 AI 编程里的关键姿势。
+          人负责判断抽象边界、行为契约和演化方向，AI 负责在边界内补齐实现。
+        </p>
+
+        <h2>把任务拆成可验证的小块</h2>
+        <p>
+          大模型最容易失控的地方，是任务太大、上下文太松、完成标准太模糊。
+          更稳的方式是把工作拆成一组有依赖关系的小任务：
+          哪些可以并行，哪些必须先完成，哪些需要测试或人工 review。
+        </p>
+        <p>
+          这听起来不像“AI 魔法”，更像成熟工程管理。
+          但也正因为如此，它有效。AI Agent 越多，越需要明确的任务边界、
+          输入输出和验收信号。
+        </p>
+
+        <h2>我的一点观察</h2>
+        <p>
+          从可观测性和分布式系统的角度看，AI 编程很像在系统里引入了一批新的执行节点。
+          它们很快，也很能干，但仍然需要协议、约束、健康检查、日志和回滚机制。
+        </p>
+        <p>
+          所以我不太相信“基本功不重要了”的说法。
+          AI 时代真正会被放大的，是已有系统的工程质量：好的架构会让 AI 更有杠杆，
+          坏的架构会让 AI 更快制造债务。
+        </p>
+
+        <h2>可以带走的清单</h2>
+        <ul>
+          <li>让 AI 先提问，再开始实现。</li>
+          <li>为项目维护一份统一语言表，减少概念漂移。</li>
+          <li>先写接口和行为契约，再让 AI 补实现。</li>
+          <li>用测试、类型检查和 lint 给 AI 生成结果建立反馈闭环。</li>
+          <li>把大任务拆成小任务，明确每一步的完成标准。</li>
+          <li>把 AI 当执行者和协作者，而不是系统设计责任的替代品。</li>
+        </ul>
+
+        <h2>资料来源</h2>
+        <ul>
+          <li>
+            <a href="https://www.youtube.com/watch?v=v4F1gFy-hqg"
+              >Matt Pocock: It Ain't Broke</a
+            >
+          </li>
+          <li>
+            <a
+              href="https://app.daily.dev/posts/it-ain-t-broke-why-software-fundamentals-matter-more-than-ever-matt-pocock-ai-hero-mattpocockuk-hnl3otdyl"
+              >Daily.dev 视频摘要</a
+            >
+          </li>
+          <li>
+            <a
+              href="https://pkm.gilbertsanchez.com/readwise/articles/it-ain%27t-broke--why-software-fundamentals-matter-more-than-ever-%E2%80%94-matt-pocock%2C-ai-hero-%40mattpocockuk-%28english-%28auto-generated%29%29"
+              >Readwise 公开高亮</a
+            >
+          </li>
+          <li>
+            <a href="https://github.com/mattpocock/skills"
+              >Matt Pocock 的 skills 仓库</a
+            >
+          </li>
+        </ul>
+      </article>
+    </main>
+
+    <footer class="site-footer">
+      <p>© 2026 我的个人博客。保持好奇，持续写作。</p>
+    </footer>
+  </body>
+</html>
